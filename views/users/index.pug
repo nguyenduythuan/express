@@ -1,0 +1,24 @@
+extends ../layout/common
+
+block content
+  h1 User
+  .btn-toolbar.justify-content-between
+    form.form-inline(action="users/search" method="get")
+      .form-group
+        input.form-control.ml-2(type="text", name="q", value= search)
+        button.btn.btn-primary.ml-2(type="submit") Search
+    a.btn.btn-outline-primary(href="/users/create") Create user
+  table.table.mt-4
+    caption List of users
+    thead
+      tr
+        th(scope="col") Name
+        th(scope="col") Phone
+        th(scope="col") 
+    tbody
+      each user in users
+        tr
+          td=user.name
+          td=user.phone
+          td.text-right
+            a.btn.btn-info.active(href='/users/' + user.id, role="button", aria-pressed="true") View

@@ -1,0 +1,28 @@
+html
+  head
+    title demo
+    link(rel="stylesheet", 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
+    crossorigin="anonymous")
+    link(rel="stylesheet", href="styles/style.css")
+  body
+    header
+      // Image and text
+      nav.navbar.navbar-expand-sm.bg-light.navbar-light
+        a.navbar-brand(href='#')
+        img.Nav-logo(src='/imgs/download.png')
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNavAltMarkup.collapse.navbar-collapse
+          .navbar-nav
+            a.nav-item.nav-link.active(href='/')
+              | Home
+              span.sr-only (current)
+            a.nav-item.nav-link(href='/users') Users
+            a.nav-item.nav-link(href='#') Pricing
+    .container
+      block content
+  script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js", crossorigin="anonymous")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js", crossorigin="anonymous")
+  script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", crossorigin="anonymous")
