@@ -1,15 +1,17 @@
-const db = require('../db');
-const shortid = require("shortid");
+// const db = require('../db');
+// const shortid = require("shortid");
+const Users = require('../models/user.model');
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
+  var users = await Users.find();
   res.render("users/index", {
-    users: db.get('users').value()
+    users
   });
 };
 
-module.exports.search = (req, res) => {
+module.exports.search = async (req, res) => {
   var q = req.query.q;
-  var users = db.get('users').value();
+  var users = await Users.find();
   var matchedUsers = users.filter(
     user => user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
   );
@@ -23,33 +25,22 @@ module.exports.create = (req, res) => {
   res.render('users/create');
 };
 
-module.exports.get = (req, res) => {
+module.exports.get = async (req, res) => {
   const id = req.params.id;
-  const user = db.get('users').find({id}).value();
+  var user = await Users.findById({_id: id});
+  // const user = db.get('users').find({id}).value();
   res.render('users/view', {
     user
   });
 };
 
 module.exports.postCreate = (req, res) => {
-  let name = req.body.name;
-  let phone = req.body.phone;
-  let errors = [];
-  if(!name) {
-    errors.push('Name is required');
-  }
-
-  if(!phone) {
-    errors.push('Phone is required');
-  }
-
-  if(errors.length) {
-    res.render('users/create', {
-      errors: errors,
-      values: req.body
-    });
-    return;
-  }
-  db.get('users').push({id: shortid.generate(), name, phone}).write();
-  res.redirect('/users');
+  let {name, phone} = req.body;
+  let avatar = req.file.path.split('/').slice(1).join('/');
+  // db.get('users').push({id: shortid.generate(), name, phone, avatar}).write();
+  // 
+  var user = new Users({name, phone, avatar});
+  user.save((err, mess) => {
+    err ? console.log(err) : res.redirect('/users');
+  });
 };

@@ -11,7 +11,7 @@ html
       // Image and text
       nav.navbar.navbar-expand-sm.bg-light.navbar-light
         a.navbar-brand(href='#')
-        img.Nav-logo(src='/imgs/download.png')
+        img(style="width: 150px;")(src='/imgs/download.png')
         button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarNavAltMarkup.collapse.navbar-collapse
@@ -20,7 +20,9 @@ html
               | Home
               span.sr-only (current)
             a.nav-item.nav-link(href='/users') Users
-            a.nav-item.nav-link(href='#') Pricing
+            a.nav-item.nav-link(href='/products') Products
+            a.nav-item.nav-link Cart (#{numCart})
+        p=user.name
     .container
       block content
   script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js", crossorigin="anonymous")

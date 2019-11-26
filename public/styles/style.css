@@ -9,6 +9,11 @@ html {
   height: 100%;
 }
 
-img.Nav-logo {
-  width: 150px;
+img.Avatar-list {
+  width: 50px;
+  border-radius: 50%;
+}
+
+p {
+  margin: 0;
 }

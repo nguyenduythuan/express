@@ -12,12 +12,15 @@ block content
     caption List of users
     thead
       tr
+        th(scope="col") Avatar
         th(scope="col") Name
         th(scope="col") Phone
         th(scope="col") 
     tbody
       each user in users
         tr
+          td
+            img.Avatar-list(src=user.avatar)
           td=user.name
           td=user.phone
           td.text-right

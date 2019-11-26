@@ -7,13 +7,17 @@ block content
     each error in errors
       .alert.alert-danger=error
 
-  form(action="/users/create", method="post")
+  form(action="/users/create", method="post", enctype="multipart/form-data")
     .form-group.row
-      label.col-sm-2.col-form-label(for="abc") Name
+      label.col-sm-2.col-form-label(for="") Name
       .col-sm-10
-        input#abc.form-control(type="text", name="name", placeholder="Name", value=values ? values.name : "")
+        input.form-control(type="text", name="name", placeholder="Name", value=values ? values.name : "")
     .form-group.row
-      label.col-sm-2.col-form-label(for="abc") Phone
+      label.col-sm-2.col-form-label(for="") Phone
       .col-sm-10
-        input#abc.form-control(type="text", name="phone", placeholder="Phone", value=values ? values.phone : "")
+        input.form-control(type="text", name="phone", placeholder="Phone", value=values ? values.phone : "")
+    .form-group.row
+      label.col-sm-2.col-form-label(for="") Avatar
+      .col-sm-10
+        input.form-control-file(type="file", name="avatar")
     button.btn.btn-primary(type="submit") Add user
