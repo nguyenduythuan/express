@@ -19,7 +19,7 @@
     "mongoose": "^5.7.12",
     "multer": "^1.4.2",
     "node-inspect": "^1.11.6",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
